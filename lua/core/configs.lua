@@ -21,6 +21,25 @@ vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "CursorHoldI", "FocusGai
   pattern = { "*" },
 })
 
+-- vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+--     virtual_text = false,
+--     signs = true,
+--     update_in_insert = false,
+--     
+-- })
+
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics, {
+    underline = true,
+    update_in_insert = false,
+    virtual_text = false,
+    severity_sort = true,
+  }
+)
+
+vim.api.nvim_set_keymap('n', '<space>r', '<cmd>lua vim.diagnostic.open_float()<CR>', { noremap=true, silent=true })
+-- vim.api.nvim_buf_set_option('n', '<space>r', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', { noremap=true, quiet=true })
+
 -- Mouse
 vim.opt.mouse = "a"
 vim.opt.mousefocus = true
@@ -57,4 +76,9 @@ vim.opt.fillchars = {
     foldsep = "│",
     foldclose = "▸"
 }
+
+vim.api.nvim_call_function("codeium#GetStatusString", {})
+
+-- write this command for nvim set statusline+=\{…\}%3{codeium#GetStatusString()}
+vim.opt.statusline = "%{codeium#GetStatusString()}"
 

@@ -10,14 +10,14 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
---  {
---    "nvim-neo-tree/neo-tree.nvim",
---    branch = "v3.x", dependencies = {
---      "nvim-lua/plenary.nvim",
---      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
---      "MunifTanjim/nui.nvim",
---    }
---  },
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v3.x", dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+      "MunifTanjim/nui.nvim",
+    }
+  },
   { 'nvim-treesitter/nvim-treesitter' }, { 'neovim/nvim-lspconfig' }, {
     'akinsho/flutter-tools.nvim',
     lazy = false,
@@ -73,9 +73,24 @@ require("lazy").setup({
 --  {"Mofiqul/vscode.nvim"},
   {"mfussenegger/nvim-dap"},
   {'gmoe/vim-espresso'},
-  {'Mofiqul/dracula.nvim'}
+  {'Mofiqul/dracula.nvim'},
 --  {"ellisonleao/gruvbox.nvim"},
   -- {"gko/vim-coloresque"},
   -- {"max397574/colortils.nvim", cmd = "Colortils"}
   -- {"suan/vim-instant-markdown"}
+  {
+    'Exafunction/codeium.vim',
+--    event = 'BufEnter'
+  },
+  {'rebelot/kanagawa.nvim'},
+  {'doums/darcula'}, 
+  {
+   "folke/trouble.nvim",
+   dependencies = { "nvim-tree/nvim-web-devicons" },
+   opts = {
+    -- your configuration comes here
+    -- or leave it empty to use the default settings
+    -- refer to the configuration section below
+   }
+  }
 })
